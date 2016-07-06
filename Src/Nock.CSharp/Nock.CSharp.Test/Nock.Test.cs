@@ -19,10 +19,10 @@ namespace Nock.CSharp.Test
         public async Task MockOkGet()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Get("/").Reply(HttpStatusCode.OK, person.ToJson());
+            new Nock("http://localhost:8080").Get($"?id={person.Id}").Reply(HttpStatusCode.OK, person.ToJson());
 
             var client = GetHttpClient();
-            var response = await client.GetAsync("/");
+            var response = await client.GetAsync($"?id={person.Id}");
 
             var responsePerson = await GetContent(response);
 

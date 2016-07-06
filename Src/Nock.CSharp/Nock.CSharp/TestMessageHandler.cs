@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nock.CSharp
 {
-    internal class TestMessageHandler : DelegatingHandler
+    public class TestMessageHandler : DelegatingHandler
     {
         protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
