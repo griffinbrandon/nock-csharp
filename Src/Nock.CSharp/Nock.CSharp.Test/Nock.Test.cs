@@ -12,14 +12,14 @@ namespace Nock.CSharp.Test
         [TestInitialize]
         public void PreTest()
         {
-            Nock.CleanAll();
+            Nocker.CleanAll();
         }
 
 		[TestMethod]
         public async Task MockOkGet()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Get($"?id={person.Id}").Reply(HttpStatusCode.OK, person.ToJson());
+            new Nocker("http://localhost:8080").Get($"?id={person.Id}").Reply(HttpStatusCode.OK, person.ToJson());
 
             var client = GetHttpClient();
             var response = await client.GetAsync($"?id={person.Id}");
@@ -34,7 +34,7 @@ namespace Nock.CSharp.Test
         public async Task MockBadRequestGet()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Get("/").Reply(HttpStatusCode.BadRequest, person.ToJson());
+            new Nocker("http://localhost:8080").Get("/").Reply(HttpStatusCode.BadRequest, person.ToJson());
 
             var client = GetHttpClient();
             var response = await client.GetAsync("/");
@@ -46,7 +46,7 @@ namespace Nock.CSharp.Test
         public async Task MockOkPost()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Post("/").Reply(HttpStatusCode.OK, person.ToJson());
+            new Nocker("http://localhost:8080").Post("/").Reply(HttpStatusCode.OK, person.ToJson());
 
             var client = GetHttpClient();
             var response = await client.PostAsync("/", GetPersonContent(person));
@@ -61,7 +61,7 @@ namespace Nock.CSharp.Test
         public async Task MockBadRequestPost()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Post("/").Reply(HttpStatusCode.BadRequest, person.ToJson());
+            new Nocker("http://localhost:8080").Post("/").Reply(HttpStatusCode.BadRequest, person.ToJson());
 
             var client = GetHttpClient();
             var response = await client.PostAsync("/", GetPersonContent(person));
@@ -73,7 +73,7 @@ namespace Nock.CSharp.Test
         public async Task MockOkPut()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Put("/").Reply(HttpStatusCode.OK, person.ToJson());
+            new Nocker("http://localhost:8080").Put("/").Reply(HttpStatusCode.OK, person.ToJson());
 
             var client = GetHttpClient();
             var response = await client.PutAsync("/", GetPersonContent(person));
@@ -88,7 +88,7 @@ namespace Nock.CSharp.Test
         public async Task MockBadRequestPut()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Put("/").Reply(HttpStatusCode.BadRequest, person.ToJson());
+            new Nocker("http://localhost:8080").Put("/").Reply(HttpStatusCode.BadRequest, person.ToJson());
 
             var client = GetHttpClient();
             var response = await client.PutAsync("/", GetPersonContent(person));
@@ -100,7 +100,7 @@ namespace Nock.CSharp.Test
         public async Task MockOkPatch()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Patch("/").Reply(HttpStatusCode.OK, person.ToJson());
+            new Nocker("http://localhost:8080").Patch("/").Reply(HttpStatusCode.OK, person.ToJson());
 
             var client = GetHttpClient();
             var request = new HttpRequestMessage(new HttpMethod("PATCH"), "/") {Content = GetPersonContent(person)};
@@ -116,7 +116,7 @@ namespace Nock.CSharp.Test
         public async Task MockBadRequestPatch()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Patch("/").Reply(HttpStatusCode.BadRequest, person.ToJson());
+            new Nocker("http://localhost:8080").Patch("/").Reply(HttpStatusCode.BadRequest, person.ToJson());
 
             var client = GetHttpClient();
             var request = new HttpRequestMessage(new HttpMethod("PATCH"), "/") {Content = GetPersonContent(person)};
@@ -129,7 +129,7 @@ namespace Nock.CSharp.Test
         public async Task MockOkDelete()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Delete("/").Reply(HttpStatusCode.OK, person.ToJson());
+            new Nocker("http://localhost:8080").Delete("/").Reply(HttpStatusCode.OK, person.ToJson());
 
             var client = GetHttpClient();
             var response = await client.DeleteAsync("/");
@@ -144,7 +144,7 @@ namespace Nock.CSharp.Test
         public async Task MockBadRequestDelete()
         {
             var person = GetPerson();
-            new Nock("http://localhost:8080").Delete("/").Reply(HttpStatusCode.BadRequest, person.ToJson());
+            new Nocker("http://localhost:8080").Delete("/").Reply(HttpStatusCode.BadRequest, person.ToJson());
 
             var client = GetHttpClient();
             var response = await client.DeleteAsync("/");
@@ -156,7 +156,7 @@ namespace Nock.CSharp.Test
         [ExpectedException(typeof(WebException))]
         public async Task WebException()
         {
-            new Nock("http://localhost:8080").Delete("/")
+            new Nocker("http://localhost:8080").Delete("/")
                 .Reply(HttpStatusCode.OK, new WebException("An unknown error occurred"));
 
             var client = GetHttpClient();
@@ -175,7 +175,7 @@ namespace Nock.CSharp.Test
         [ExpectedException(typeof(NockException))]
         public async Task MissingMethod()
         {
-            new Nock("http://localhost:8080").Delete("/").Reply(HttpStatusCode.OK, GetPerson().ToJson());
+            new Nocker("http://localhost:8080").Delete("/").Reply(HttpStatusCode.OK, GetPerson().ToJson());
 
             var client = GetHttpClient();
             await client.GetAsync("/");
@@ -185,8 +185,8 @@ namespace Nock.CSharp.Test
         [ExpectedException(typeof(NockException))]
         public async Task DuplicateMethods()
         {
-            new Nock("http://localhost:8080").Get("/").Reply(HttpStatusCode.OK, GetPerson().ToJson());
-            new Nock("http://localhost:8080").Get("/").Reply(HttpStatusCode.OK, GetPerson().ToJson());
+            new Nocker("http://localhost:8080").Get("/").Reply(HttpStatusCode.OK, GetPerson().ToJson());
+            new Nocker("http://localhost:8080").Get("/").Reply(HttpStatusCode.OK, GetPerson().ToJson());
 
             var client = GetHttpClient();
             await client.GetAsync("/");

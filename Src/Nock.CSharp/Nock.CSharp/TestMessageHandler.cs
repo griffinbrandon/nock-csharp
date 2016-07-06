@@ -13,7 +13,7 @@ namespace Nock.CSharp
             var method = request.Method.ToString().ToLower();
             var uri = request.RequestUri.ToString().ToLower();
 
-            var nocks = Nock.Nocks;
+            var nocks = Nocker.Nocks;
 
             // make sure the method exist for the uri
             if (nocks.All(x => !(x.RequestType.ToString().ToLower() == method && $"{x.BasePath}{x.Uri}".ToLower() == uri)))
@@ -21,11 +21,11 @@ namespace Nock.CSharp
                 throw new NockException($"Unable to mock {method} method, {uri}");
             }
 
-            Nock nock;
+            Nocker nocker;
 
             try
             {
-                nock =
+                nocker =
                     nocks.Single(x => x.RequestType.ToString().ToLower() == method && $"{x.BasePath}{x.Uri}".ToLower() == uri);
             }
             catch (InvalidOperationException ex)
@@ -34,7 +34,7 @@ namespace Nock.CSharp
                 throw new NockException($"Mulitple nocks found with method {method}, {uri}");
             }
 
-            return await nock.Respond();
+            return await nocker.Respond();
 
         }
     }

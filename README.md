@@ -86,7 +86,7 @@ internal class Factory : IFactory
 
   public IFactory SetUp()
   {
-    this.Container.RegisterType<HttpClient, Nock.CSharp.HttpClient>(new ContainerControlledLifetimeManager());
+    this.Container.RegisterType<HttpClient, Nock.CSharp.HttpClient>();
     return this;
   }
 }
@@ -131,7 +131,8 @@ internal class Factory : IFactory
 
   public IFactory SetUp()
   {
-    this.Container.RegisterType<HttpClient, System.Net.Http.HttpClient>(new ContainerControlledLifetimeManager());
+    // ensure the parameterless constructor is used
+    this.Container.RegisterType<HttpClient>(new InjectionConstructor());
     return this;
   }
 }
