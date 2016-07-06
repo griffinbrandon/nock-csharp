@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nock.CSharp", "Nock.CSharp\Nock.CSharp.csproj", "{422B1915-2EBB-4D30-9B08-52331964F014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nock.CSharp.Test", "Nock.CSharp.Test\Nock.CSharp.Test.csproj", "{B331DB06-7886-440F-B3C2-A16E9EA7128B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{422B1915-2EBB-4D30-9B08-52331964F014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{422B1915-2EBB-4D30-9B08-52331964F014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{422B1915-2EBB-4D30-9B08-52331964F014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{422B1915-2EBB-4D30-9B08-52331964F014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B331DB06-7886-440F-B3C2-A16E9EA7128B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B331DB06-7886-440F-B3C2-A16E9EA7128B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B331DB06-7886-440F-B3C2-A16E9EA7128B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B331DB06-7886-440F-B3C2-A16E9EA7128B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
