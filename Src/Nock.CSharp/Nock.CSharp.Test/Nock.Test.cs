@@ -69,6 +69,11 @@ namespace Nock.CSharp.Test
             Assert.IsTrue(response.StatusCode == HttpStatusCode.BadRequest);
         }
 
+        public async Task MockOkPostBlankResponse()
+        {
+            
+        }
+
         [TestMethod]
         public async Task MockOkPut()
         {
