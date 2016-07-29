@@ -5,11 +5,11 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nock.CSharp
+namespace NockCSharp
 {
-    public class Nocker
+    public class Nock
     {
-        public Nocker(string basePath)
+        public Nock(string basePath)
         {
             // check for trailing slash
             if (basePath.LastIndexOf('/') == basePath.Length - 1)
@@ -22,7 +22,7 @@ namespace Nock.CSharp
             Nocks.Add(this);
         }
 
-        public static List<Nocker> Nocks { get; } = new List<Nocker>();
+        public static List<Nock> Nocks { get; } = new List<Nock>();
         public string BasePath { get; set; }
         public string Uri { get; set; }
         public RequestType RequestType { get; set; }
@@ -30,81 +30,81 @@ namespace Nock.CSharp
         public Exception Exception { get; set; }
         public HttpStatusCode StatusCode { get; set; }
 
-        public Nocker Get(string uri)
+        public Nock Get(string uri)
         {
             SetUri(uri);
             RequestType = RequestType.Get;
             return this;
         }
 
-        public Nocker Patch(string uri)
+        public Nock Patch(string uri)
         {
             SetUri(uri);
             RequestType = RequestType.Patch;
             return this;
         }
 
-        public Nocker Post(string uri)
+        public Nock Post(string uri)
         {
             SetUri(uri);
             RequestType = RequestType.Post;
             return this;
         }
 
-        public Nocker Put(string uri)
+        public Nock Put(string uri)
         {
             SetUri(uri);
             RequestType = RequestType.Put;
             return this;
         }
 
-        public Nocker Delete(string uri)
+        public Nock Delete(string uri)
         {
             SetUri(uri);
             RequestType = RequestType.Delete;
             return this;
         }
 
-        public Nocker Head(string uri)
+        public Nock Head(string uri)
         {
             SetUri(uri);
             RequestType = RequestType.Head;
             return this;
         }
 
-        public Nocker Merge(string uri)
+        public Nock Merge(string uri)
         {
             SetUri(uri);
             RequestType = RequestType.Merge;
             return this;
         }
 
-        public Nocker Reply(HttpStatusCode statusCode, HttpContent content)
+        public Nock Reply(HttpStatusCode statusCode, HttpContent content)
         {
             StatusCode = statusCode;
             Content = content;
             return this;
         }
 
-        public Nocker Reply(HttpStatusCode statusCode, string content)
+        public Nock Reply(HttpStatusCode statusCode, string content)
         {
             var strContent = new StringContent(content);
             return Reply(statusCode, strContent);
         }
 
-        public Nocker Reply(HttpStatusCode statusCode, string content, Encoding encoding)
+        public Nock Reply(HttpStatusCode statusCode, string content, Encoding encoding)
         {
             var strContent = new StringContent(content, encoding);
             return Reply(statusCode, strContent);
         }
 
-        public Nocker Reply(HttpStatusCode statusCode, string content, Encoding encoding, string mediaType)
+        public Nock Reply(HttpStatusCode statusCode, string content, Encoding encoding, string mediaType)
         {
             var strContent = new StringContent(content, encoding, mediaType);
             return Reply(statusCode, strContent);
         }
 
-        public Nocker Reply(HttpStatusCode statusCode, Exception exception)
+        public Nock Reply(HttpStatusCode statusCode, Exception exception)
         {
             StatusCode = statusCode;
             Exception = exception;

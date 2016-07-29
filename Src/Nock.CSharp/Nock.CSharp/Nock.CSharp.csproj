@@ -7,7 +7,7 @@
     <ProjectGuid>{422B1915-2EBB-4D30-9B08-52331964F014}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nock.CSharp</RootNamespace>
+    <RootNamespace>NockCSharp</RootNamespace>
     <AssemblyName>Nock.CSharp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -42,11 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpClient.cs" />
-    <Compile Include="Nocker.cs" />
+    <Compile Include="Nock.cs" />
     <Compile Include="NockException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestType.cs" />
-    <Compile Include="TestMessageHandler.cs" />
+    <Compile Include="NockMessageHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

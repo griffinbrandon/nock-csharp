@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Net;
 
-namespace Nock.CSharp
+namespace NockCSharp
 {
     public class NockException : Exception
     {

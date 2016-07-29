@@ -6,7 +6,7 @@
     <ProjectGuid>{B331DB06-7886-440F-B3C2-A16E9EA7128B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nock.CSharp.Test</RootNamespace>
+    <RootNamespace>NockCSharp.Test</RootNamespace>
     <AssemblyName>Nock.CSharp.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Nock.CSharp.Test
+namespace NockCSharp.Test
 {
     public class Person
     {

@@ -1,4 +1,4 @@
-﻿namespace Nock.CSharp
+﻿namespace NockCSharp
 {
     public enum RequestType
     {

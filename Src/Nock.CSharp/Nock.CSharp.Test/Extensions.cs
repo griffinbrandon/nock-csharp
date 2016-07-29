@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Nock.CSharp.Test
+namespace NockCSharp.Test
 {
     public static class Extensions
     {
