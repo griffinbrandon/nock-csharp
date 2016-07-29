@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>nock-csharp</id>
+    <version>$version$</version>
+    <title>nock-csharp</title>
+    <authors>Brandon Griffin</authors>
+    <owners>bgriffin4750</owners>
+    <licenseUrl>https://opensource.org/licences/MIT</licenseUrl>
+    <projectUrl>https://github.com/bgriffin4750/nock-csharp</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Nock-CSharp is an HTTP mocking library that was inspired by node-nock. It is used to mimic the flow you 
+      normally expect using the standard HttpClient object available in .net, without having to stray away from 
+      the standard objects already built in.
+    </description>
+    <releaseNotes>Initial package release</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Moq UnitTest Nock Http HttpClient</tags>
+  </metadata>
+</package>
