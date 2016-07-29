@@ -2,10 +2,14 @@
 
 Nock-CSharp is an HTTP mocking library that was inspired by <a href="https://github.com/node-nock/nock">node-nock</a>.
 
-Nock-CSharp can be used to mimic the flow you would normally expect using the standard HttpClient available in .net, without having to stray away from the standard objects already built in.
+It is used to mimic the flow you would normally expect using the standard HttpClient available in .net, without having to stray away from the standard objects already built in.
 
 #Install
-Until a Nuget package is deployed, you will have to clone, build and reference Nock.CSharp.dll.
+Package is hosted in <a href="https://www.nuget.org/packages/nock-csharp">nuget.org</a>. Or run
+```
+PM> Install-Package nock-csharp
+```
+from the <a href="https://docs.nuget.org/consume/package-manager-console">Package Manager Console</a>
 
 #Setup
 There are a couple of steps that need to be followed in order to use this library. To intercept requests using the standard `System.Net.Http.HttpClient` object, you need to initialize it with an object that inherits from `System.Net.Http.DelegatingHandler`.
@@ -17,7 +21,7 @@ To implement this, you will need to be set up for dependency injection. This wil
 Following is a small example on how to do this using the nuget package Unity (http://unity.codeplex.com/).
 
 IFactory.cs
-```
+```csharp
 public interface IFactory
 {
   IUnityContainer Container { get; }
@@ -28,7 +32,7 @@ public interface IFactory
 ```
 
 PeopleService.cs
-```
+```csharp
 private IFactory _factory;
 
 public Service(IFactory factory)
@@ -48,7 +52,7 @@ public Task<HttpResponseMessage> Post(string uri, string json)
 ```
 
 Factory.cs (from unit tests)
-```
+```csharp
 using Microsoft.Practices.Unity;
 
 internal class Factory : IFactory
@@ -93,7 +97,7 @@ internal class Factory : IFactory
 ```
 
 Factory.cs (from project) Notice the only change being in `SetUp`.
-```
+```csharp
 using Microsoft.Practices.Unity;
 
 internal class Factory : IFactory
@@ -142,11 +146,11 @@ Finally, all you need to do is instantiate `PersonService` with the respective `
 
 #Interceptors
 Once you have successfully wired up `Nock.CSharp.HttpClient`, you are ready to start using it. To mock a request, you can create a mocking object like this:
-```
+```csharp
 new Nock("http://localhost:8080").Get("/?id=1").Reply(HttpStatusCode.Ok, "{\"id\": 1, \"firstName\":\"brandon\"}");
 ```
 This will intercept every HTTP call to `http://localhost:8080/?id=1`. It will then return an HttpResponseMessage with a status 200 and the body returned will be a json object:
-```
+```csharp
 {
   "id": 1,
   "firstName": "brandon"
